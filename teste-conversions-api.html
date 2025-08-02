@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Teste Facebook Conversions API</title>
+</head>
+<body>
+  <h2>Teste da Facebook Conversions API</h2>
+  <button onclick="enviarEvento()">Enviar Evento</button>
+  <pre id="resposta"></pre>
+
+  <script>
+    async function enviarEvento() {
+      const respostaElemento = document.getElementById('resposta');
+      respostaElemento.innerText = 'Enviando...';
+
+      const dados = {
+        event_name: "Purchase",
+        event_time: Math.floor(Date.now() / 1000),
+        event_source_url: "https://seusite.com/pagina-de-compra",
+        user_data: {
+          client_ip_address: "123.123.123.123",
+          client_user_agent: navigator.userAgent
+        },
+        custom_data: {
+          currency: "BRL",
+          value: 99.90
+        }
+      };
+
+      try {
+        const resposta = await fetch("https://facebook-conversions-api.onrender.com/purchase", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(dados)
+        });
+
+        const resultado = await resposta.json();
+        respostaElemento.innerText = JSON.stringify(resultado, null, 2);
+      } catch (erro) {
+        respostaElemento.innerText = 'Erro: ' + erro.message;
+      }
+    }
+  </script>
+</body>
+</html>
