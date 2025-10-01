@@ -27,13 +27,13 @@
             margin: 0;
             padding: 0;
             width: 100%;
-            min-height: 100vh; /* Usa min-height para garantir que o fundo preencha a tela */
+            min-height: 100vh;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: #000000;
             color: #ffffff;
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* CORREÇÃO: Alinha o conteúdo no topo */
+            align-items: flex-start;
             text-align: center;
             box-sizing: border-box; 
         }
@@ -42,10 +42,9 @@
         .container {
             max-width: 600px;
             width: 90%;
-            padding: 20px;
             box-sizing: border-box;
-            margin-top: 40px; /* Adiciona um espaço no topo */
-            margin-bottom: 40px; /* Adiciona um espaço no final */
+            margin-top: 40px;
+            margin-bottom: 40px;
         }
 
         /* --- Textos --- */
@@ -81,7 +80,7 @@
             color: #b0b0b0;
             text-decoration: underline;
             font-size: 0.9em;
-            cursor: pointer; /* Adiciona a "mãozinha" para indicar que é clicável */
+            cursor: pointer;
         }
 
         .disclaimer {
@@ -94,12 +93,12 @@
         .main-image, .footer-logo {
             max-width: 100%;
             height: auto;
+            display: block; /* Garante que a imagem não tenha espaços extras */
         }
 
         .footer-logo {
             max-width: 150px;
-            margin-top: 50px;
-            margin-bottom: 15px;
+            margin: 50px auto 15px auto;
         }
 
         /* --- Botão Principal (CTA) --- */
@@ -159,7 +158,7 @@
 
         /* --- Bloco de Instruções do Telegram --- */
         #telegram-instructions {
-            display: none; /* Inicia oculto */
+            display: none;
             margin-top: 20px;
             padding: 20px;
             border: 1px solid #333;
@@ -168,37 +167,24 @@
             text-align: left;
             color: #ccc;
         }
-        #telegram-instructions h3 {
-            color: #fff;
-            margin-top: 0;
-            text-align: center;
-        }
-        #telegram-instructions p {
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
-        #telegram-instructions ul {
-            padding-left: 20px;
-        }
-        #telegram-instructions li {
-            margin-bottom: 10px;
-        }
-        #telegram-instructions a {
-            color: #38A5F3; /* Cor azul do tema */
-            text-decoration: underline;
-            font-weight: bold;
-        }
-
+        #telegram-instructions h3 { color: #fff; margin-top: 0; text-align: center; }
+        #telegram-instructions p { margin-bottom: 15px; line-height: 1.6; }
+        #telegram-instructions ul { padding-left: 20px; }
+        #telegram-instructions li { margin-bottom: 10px; }
+        #telegram-instructions a { color: #38A5F3; text-decoration: underline; font-weight: bold; }
 
         /* --- AJUSTES PARA DISPOSITIVOS MÓVEIS (RESPONSIVIDADE) --- */
         @media (max-width: 600px) {
+            .container {
+                width: 100%;  /* OCUPA A LARGURA TOTAL */
+                margin: 0;    /* REMOVE AS MARGENS */
+                padding: 0;   /* REMOVE OS ESPAÇAMENTOS INTERNOS */
+            }
+            .content-padding {
+                padding: 25px 15px; /* Adiciona um padding SÓ para o conteúdo de texto/botão */
+            }
             .headline {
                 font-size: 1.5em; 
-            }
-            .container {
-                width: 95%; 
-                padding: 10px;
-                margin-top: 20px; /* Espaço menor no topo para celular */
             }
             .cta-button {
                 padding: 15px 25px; 
@@ -214,48 +200,46 @@
         <p class="header-text">GRUPO EXCLUSIVO NO TELEGRAM! 🔞</p>
 
         <img src="https://i.ibb.co/0Rkwc3YP/f8e3ea5a-7b47-4e24-80d0-0f86f372823e.jpg" alt="Coroas & Milfs" class="main-image">
-
-        <h1 id="frase-principal" class="headline" style="display: none;">
-            ESTÁ BUSCANDO COROAS & MILFS PRÓXIMO A <span id="cidade">...</span>?
-        </h1>
         
-        <div id="loader" class="loader"></div>
+        <div class="content-padding">
+            <h1 id="frase-principal" class="headline" style="display: none;">
+                ESTÁ BUSCando COROAS & MILFS PRÓXIMO A <span id="cidade">...</span>?
+            </h1>
+            
+            <div id="loader" class="loader"></div>
 
-        <a href="https://wiinbot.com/atendimento?ref=68d1fc20fa85cc02d63ea952" id="cta-button" class="cta-button pulsing" style="display: none;">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24" fill="currentColor">
-                <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
-            </svg>
-            ENTRAR NO GRUPO AGORA
-        </a>
+            <a href="https://wiinbot.com/atendimento?ref=68d1fc20fa85cc02d63ea952" id="cta-button" class="cta-button pulsing" style="display: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
+                </svg>
+                ENTRAR NO GRUPO AGORA
+            </a>
 
-        <a href="javascript:void(0);" onclick="toggleInstructions()" class="secondary-link">Não tenho Telegram, como participo?</a>
-        
-        <div id="telegram-instructions">
-            <h3>Como Instalar o Telegram</h3>
-            <p>É muito simples! Siga os passos para o seu dispositivo:</p>
+            <a href="javascript:void(0);" onclick="toggleInstructions()" class="secondary-link">Não tenho Telegram, como participo?</a>
             
-            <p><strong>1. Escolha sua plataforma e baixe o app:</strong></p>
-            <ul>
-                <li><a href="https://play.google.com/store/apps/details?id=org.telegram.messenger" target="_blank" rel="noopener">Android (Google Play Store)</a></li>
-                <li><a href="https://apps.apple.com/app/telegram-messenger/id686449807" target="_blank" rel="noopener">iPhone/iPad (Apple App Store)</a></li>
-                <li><a href="https://desktop.telegram.org/" target="_blank" rel="noopener">Computador (Windows, Mac ou Linux)</a></li>
-            </ul>
-            
-            <p><strong>2. Instale e abra o aplicativo.</strong></p>
-            
-            <p><strong>3.</strong> Siga as instruções na tela para <strong>cadastrar seu número de telefone</strong>. Você receberá um código de confirmação.</p>
-            
-            <p style="text-align: center; font-weight: bold;">Pronto! Agora é só voltar aqui e clicar no botão azul.</p>
+            <div id="telegram-instructions">
+                <h3>Como Instalar o Telegram</h3>
+                <p>É muito simples! Siga os passos para o seu dispositivo:</p>
+                <p><strong>1. Escolha sua plataforma e baixe o app:</strong></p>
+                <ul>
+                    <li><a href="https://play.google.com/store/apps/details?id=org.telegram.messenger" target="_blank" rel="noopener">Android (Google Play Store)</a></li>
+                    <li><a href="https://apps.apple.com/app/telegram-messenger/id686449807" target="_blank" rel="noopener">iPhone/iPad (Apple App Store)</a></li>
+                    <li><a href="https://desktop.telegram.org/" target="_blank" rel="noopener">Computador (Windows, Mac ou Linux)</a></li>
+                </ul>
+                <p><strong>2. Instale e abra o aplicativo.</strong></p>
+                <p><strong>3.</strong> Siga as instruções na tela para <strong>cadastrar seu número de telefone</strong>.</p>
+                <p style="text-align: center; font-weight: bold;">Pronto! Agora é só voltar aqui e clicar no botão azul.</p>
+            </div>
+
+            <img src="logo-footer.png" alt="Logo Coroas & Milfs" class="footer-logo">
+
+            <p class="disclaimer">
+                Este site não faz parte do site do Facebook ou do Facebook Inc. Além disso, este site NÃO é endossado pelo Facebook de forma alguma. FACEBOOK é uma marca registrada da FACEBOOK, Inc.
+            </p>
         </div>
-        <img src="logo-footer.png" alt="Logo Coroas & Milfs" class="footer-logo">
-
-        <p class="disclaimer">
-            Este site não faz parte do site do Facebook ou do Facebook Inc. Além disso, este site NÃO é endossado pelo Facebook de forma alguma. FACEBOOK é uma marca registrada da FACEBOOK, Inc.
-        </p>
     </div>
 
     <script>
-        // Função para mostrar/ocultar as instruções
         function toggleInstructions() {
             const instructions = document.getElementById('telegram-instructions');
             if (instructions.style.display === 'block') {
@@ -283,16 +267,12 @@
                 try {
                     const controller = new AbortController();
                     const timeoutId = setTimeout(() => controller.abort(), 4000); 
-                    
                     const resposta = await fetch('https://ipinfo.io/city', { signal: controller.signal });
                     clearTimeout(timeoutId);
-
                     if (resposta.ok) {
                         const cidade = await resposta.text();
                         mostrarResultado(cidade.trim());
-                    } else {
-                        throw new Error('API ipinfo.io falhou');
-                    }
+                    } else { throw new Error('API ipinfo.io falhou'); }
                 } catch (erro) {
                     console.error("Erro ao buscar localização por IP:", erro);
                     mostrarResultado("SUA REGIÃO"); 
