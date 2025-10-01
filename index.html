@@ -27,16 +27,15 @@
             margin: 0;
             padding: 0;
             width: 100%;
-            min-height: 100%;
+            min-height: 100vh; /* Usa min-height para garantir que o fundo preencha a tela */
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: #000000;
             color: #ffffff;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start; /* CORREÇÃO: Alinha o conteúdo no topo */
             text-align: center;
-            padding: 20px 0;
-            box-sizing: border-box; /* Adicionado para melhor cálculo de tamanho */
+            box-sizing: border-box; 
         }
 
         /* --- Container Principal --- */
@@ -45,6 +44,8 @@
             width: 90%;
             padding: 20px;
             box-sizing: border-box;
+            margin-top: 40px; /* Adiciona um espaço no topo */
+            margin-bottom: 40px; /* Adiciona um espaço no final */
         }
 
         /* --- Textos --- */
@@ -56,7 +57,7 @@
         }
 
         .headline {
-            font-size: 1.7em; /* Fonte base ligeiramente reduzida */
+            font-size: 1.7em;
             font-weight: 600;
             margin-top: 30px;
             margin-bottom: 25px;
@@ -64,8 +65,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-wrap: wrap; /* CORREÇÃO: Permite que o texto quebre a linha corretamente */
-            line-height: 1.3; /* Melhora espaçamento vertical se quebrar a linha */
+            flex-wrap: wrap; 
+            line-height: 1.3;
         }
 
         #cidade {
@@ -80,6 +81,7 @@
             color: #b0b0b0;
             text-decoration: underline;
             font-size: 0.9em;
+            cursor: pointer; /* Adiciona a "mãozinha" para indicar que é clicável */
         }
 
         .disclaimer {
@@ -155,19 +157,51 @@
             100% { transform: rotate(360deg); }
         }
 
+        /* --- Bloco de Instruções do Telegram --- */
+        #telegram-instructions {
+            display: none; /* Inicia oculto */
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            background-color: #1a1a1a;
+            text-align: left;
+            color: #ccc;
+        }
+        #telegram-instructions h3 {
+            color: #fff;
+            margin-top: 0;
+            text-align: center;
+        }
+        #telegram-instructions p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        #telegram-instructions ul {
+            padding-left: 20px;
+        }
+        #telegram-instructions li {
+            margin-bottom: 10px;
+        }
+        #telegram-instructions a {
+            color: #38A5F3; /* Cor azul do tema */
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+
         /* --- AJUSTES PARA DISPOSITIVOS MÓVEIS (RESPONSIVIDADE) --- */
         @media (max-width: 600px) {
             .headline {
-                font-size: 1.5em; /* Fonte menor no celular */
+                font-size: 1.5em; 
             }
-
             .container {
-                width: 95%; /* Ocupa mais a tela */
+                width: 95%; 
                 padding: 10px;
+                margin-top: 20px; /* Espaço menor no topo para celular */
             }
-
             .cta-button {
-                padding: 15px 25px; /* Botão um pouco menor */
+                padding: 15px 25px; 
                 font-size: 1em;
             }
         }
@@ -188,14 +222,31 @@
         <div id="loader" class="loader"></div>
 
         <a href="https://wiinbot.com/atendimento?ref=68d1fc20fa85cc02d63ea952" id="cta-button" class="cta-button pulsing" style="display: none;">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24" fill="currentColor">
                 <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
             </svg>
             ENTRAR NO GRUPO AGORA
         </a>
 
-        <a href="#" class="secondary-link">Não tenho Telegram, como participo?</a>
-
+        <a href="javascript:void(0);" onclick="toggleInstructions()" class="secondary-link">Não tenho Telegram, como participo?</a>
+        
+        <div id="telegram-instructions">
+            <h3>Como Instalar o Telegram</h3>
+            <p>É muito simples! Siga os passos para o seu dispositivo:</p>
+            
+            <p><strong>1. Escolha sua plataforma e baixe o app:</strong></p>
+            <ul>
+                <li><a href="https://play.google.com/store/apps/details?id=org.telegram.messenger" target="_blank" rel="noopener">Android (Google Play Store)</a></li>
+                <li><a href="https://apps.apple.com/app/telegram-messenger/id686449807" target="_blank" rel="noopener">iPhone/iPad (Apple App Store)</a></li>
+                <li><a href="https://desktop.telegram.org/" target="_blank" rel="noopener">Computador (Windows, Mac ou Linux)</a></li>
+            </ul>
+            
+            <p><strong>2. Instale e abra o aplicativo.</strong></p>
+            
+            <p><strong>3.</strong> Siga as instruções na tela para <strong>cadastrar seu número de telefone</strong>. Você receberá um código de confirmação.</p>
+            
+            <p style="text-align: center; font-weight: bold;">Pronto! Agora é só voltar aqui e clicar no botão azul.</p>
+        </div>
         <img src="logo-footer.png" alt="Logo Coroas & Milfs" class="footer-logo">
 
         <p class="disclaimer">
@@ -204,6 +255,16 @@
     </div>
 
     <script>
+        // Função para mostrar/ocultar as instruções
+        function toggleInstructions() {
+            const instructions = document.getElementById('telegram-instructions');
+            if (instructions.style.display === 'block') {
+                instructions.style.display = 'none';
+            } else {
+                instructions.style.display = 'block';
+            }
+        }
+
         window.onload = function() {
             const cidadeElemento = document.getElementById('cidade');
             const loaderElemento = document.getElementById('loader');
